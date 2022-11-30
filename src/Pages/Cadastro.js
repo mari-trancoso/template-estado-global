@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { handleHome } from "../Router/cordinator";
 import styled from "styled-components";
 
-export default function Cadastro (props){
+export default function Cadastro ({frutas, setFrutas}){
   const[formulario, setFormulario]=useState({name:"", url:"", price:""})
   const navigate = useNavigate();
 
@@ -14,7 +14,28 @@ export default function Cadastro (props){
   const handleClick = (event)=>{
     event.preventDefault()
     console.log(formulario);
+
+    const id = (frutas[frutas.length-1].id)+1
+
+    console.log(id)
+
+    const novaFruta = {
+      id:id,
+      name: formulario.name,
+      url: formulario.url,
+      price: formulario.price
+
+    }
+
+    setFrutas([...frutas, novaFruta])
   }
+
+  // const cadastrar = () => {
+  //   //tem que entrar no frutas e setfrutas que vem do mercadinho
+  //   const novaFruta = {
+
+  //   }
+  // }
  
  
   return(
